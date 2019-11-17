@@ -1,14 +1,29 @@
 import React, { PureComponent } from 'react';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import Fireplace from './Fireplace';
 import Snow from './Snow';
 
+const fadeIn = keyframes`
+  0% {
+    opacity: 0;
+    top: 0px;
+  }
+  50% {
+    top: -15px;
+  }
+  100% {
+    opacity: 1;
+    top: 0px;
+  }
+`;
+
 const CozyHolidayWrapper = styled.div`
   text-align: center;
-  padding-top: 20%;
+  padding-top: 23%;
   font-family: 'Press Start 2P', cursive;
-  font-size: 24px;
+  font-size: 18px;
   color: #fff;
+  animation: ${fadeIn} 1.7s ease-in-out;
 `;
 
 const TemporaryButton = styled.div`
@@ -17,13 +32,16 @@ const TemporaryButton = styled.div`
   vertical-align: middle;
   width: 380px;
   height: 60px;
-  border: 2px solid gray;
+  border: 2px solid #fff;
   border-radius: 4px;
-  background-color: #fff;
+  background-color: #ff8494;
   font-family: 'Press Start 2P', cursive;
   line-height: 60px;
-  color: #000;
+  color: #fff;
   cursor: pointer;
+  -webkit-box-shadow: 0px 0px 7px 0px rgba(103,103,103,1);
+  -moz-box-shadow: 0px 0px 7px 0px rgba(103,103,103,1);
+  box-shadow: 0px 0px 7px 0px rgba(103,103,103,1);
 
   &:hover {
     opacity: .9;
@@ -47,7 +65,7 @@ class App extends PureComponent {
   render() {
     return (
       <CozyHolidayWrapper>
-        Welcome to the cozy holiday!
+        Welcome to the Cozy Holiday Experience
         <br />
         <br />
         <br />
