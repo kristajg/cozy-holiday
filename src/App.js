@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import styled, { keyframes } from 'styled-components';
 import Fireplace from './Fireplace';
-import Snow from './Snow';
+import Snow from './components/snow/Snow';
 
 const fadeIn = keyframes`
   0% {
@@ -52,6 +52,8 @@ class App extends PureComponent {
   state = {
     fireVisible: false,
     isSnowing: false,
+    showEggnog: false,
+    snowIntensity: 'mild', // number of snowflakes, decides snowing intensity. TODO: accept snowIntensity as a prop: mild, flurry, blizzard
   };
 
   fireDisplayToggle = () => {
@@ -61,6 +63,10 @@ class App extends PureComponent {
   snowDisplayToggle = () => {
     this.setState({ isSnowing: !this.state.isSnowing });
   };
+
+  eggnogToggle = () => {
+    this.setState({ showEggnog: !this.state.showEggnog });
+  }
 
   render() {
     return (
@@ -79,8 +85,16 @@ class App extends PureComponent {
         </TemporaryButton>
         <br />
         <br />
-        <Fireplace visible={this.state.fireVisible} />
-        <Snow isSnowing={this.state.isSnowing} />
+        <TemporaryButton onClick={() => this.eggnogToggle()}>
+          Have egg nog: TODO
+        </TemporaryButton>
+        {(this.state.fireVisible && <Fireplace visible={this.state.fireVisible} />)}
+        {(this.state.isSnowing &&
+          <Snow
+            isSnowing={this.state.isSnowing}
+            snowIntensity={this.state.snowIntensity}
+          />
+        )}
       </CozyHolidayWrapper>
     );
   }

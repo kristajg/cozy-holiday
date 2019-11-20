@@ -3,12 +3,19 @@ import styled, { keyframes } from 'styled-components';
 import fire from './assets/fire.gif';
 import cracklingSound from './assets/crackling_fire.mp3';
 
-const animateSize = keyframes`
+const animateSizeUp = keyframes`
   0% {
     height: 128px;
     width: 128px;
   }
-  50% {
+  100% {
+    height: 168px;
+    width: 168px;
+  }
+`;
+
+const animateSizeDown = keyframes`
+  0% {
     height: 168px;
     width: 168px;
   }
@@ -18,8 +25,11 @@ const animateSize = keyframes`
   }
 `;
 
-const FireplaceImage = styled.img`
+const FireplaceWrapper = styled.div`
   display: ${props => props.visible ? 'block' : 'none'};
+`;
+
+const FireplaceImage = styled.img`
   position: absolute;
   bottom: 20px;
   left: 20px;
@@ -31,11 +41,16 @@ const FireplaceImage = styled.img`
 // TODO: animate size change on mouseover
 
 class Fireplace extends Component {
+  state = {
+    animateFireSize: false,
+  };
+
   componentDidUpdate(prevProps) {
     const { visible } = this.props;
     const audio = document.getElementById('fireplace-audio');
     if (visible && prevProps.visible !== visible) {
       if (audio instanceof HTMLAudioElement) {
+        audio.volume = 0.3;
         audio.play();
       }
     } else if (prevProps.visible !== visible) {
@@ -43,13 +58,23 @@ class Fireplace extends Component {
     }
   }
 
+  toggleSizeAnimation = () => {
+    console.log('umm')
+    this.setState({ animateFireSize: !this.state.animateFireSize });
+  }
+
   render() {
-    const { visible } = this.props;
     return (
-      <div>
-        <FireplaceImage visible={visible} src={fire} alt="Fireplace" />
+      <FireplaceWrapper visible={this.props.visible}>
+        <FireplaceImage
+          src={fire}
+          alt="Fireplace"
+          onMouseEnter={() => this.toggleSizeAnimation()}
+          onMouseLeave={() => this.toggleSizeAnimation()}
+          animateFireSize={this.state.animateFireSize}
+        />
         <audio id='fireplace-audio' src={cracklingSound} loop />
-      </div>
+      </FireplaceWrapper>
     );
   }
 }
