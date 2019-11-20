@@ -11,7 +11,7 @@ const randomizeXPostion = screenWidth => Math.floor((Math.random() * screenWidth
 
 const randomizeFallingSpeed = () => Math.floor((Math.random() * 5) + 0);
 
-const randomizeSwayPercent = max => Math.floor((Math.random() * max) + 1);
+const randomizeSwayPercent = () => Math.floor((Math.random() * 60) + 20);
 
 class Snow extends Component {
   state = {
@@ -55,7 +55,7 @@ class Snow extends Component {
         flakeShape={flakeShape}
         xPosition={randomizeXPostion(screenWidth)}
         fallingSpeed={randomizeFallingSpeed()}
-        swayTiming={randomizeSwayPercent(40)}
+        swayTiming={randomizeSwayPercent()}
       />
     );
   }
