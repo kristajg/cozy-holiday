@@ -1,14 +1,12 @@
-
-
 import React from 'react';
 import styled, { keyframes } from 'styled-components';
 
-const animateSnowFromTopDown = ({ screenHeight, xPosition, swayWidthPercent }) => keyframes`
+const animateSnowFromTopDown = ({ screenHeight }) => keyframes`
   0% {
     top: -5px;
   }
   100% {
-    top: ${screenHeight + 5}px;
+    top: ${screenHeight - 5}px;
   }
 `;
 
@@ -33,12 +31,15 @@ const SnowflakeStyle = styled.div`
   left: ${props => props.xPosition}px;
   height: 5px;
   width: 5px;
+  overflow: hidden;
   background-color: #fff;
   border-radius: ${props => props.isRound ? '50%' : '0'};
   animation: ${props => animateSnowFromTopDown(props)} infinite 5s, ${props => swaySnow(props)} infinite 5s ease-in-out, ${flipSnow} infinite 2.5s;
   animation-delay: ${props => props.delay}s;
   animation-timing-function: linear;
 `;
+
+
 
 const Snowflake = ({
   flakeShape,

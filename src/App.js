@@ -19,7 +19,7 @@ const fadeIn = keyframes`
 
 const CozyHolidayWrapper = styled.div`
   text-align: center;
-  padding-top: 23%;
+  padding-top: 15%;
   font-family: 'Press Start 2P', cursive;
   font-size: 18px;
   color: #fff;
@@ -45,6 +45,10 @@ const TemporaryButton = styled.div`
 
   &:hover {
     opacity: .9;
+  }
+
+  @media only screen and (max-width: 600px) {
+    width: 75%;
   }
 `;
 
@@ -76,19 +80,19 @@ class App extends PureComponent {
         <br />
         <br />
         <TemporaryButton onClick={() => this.fireDisplayToggle()}>
-          Toggle for fire
+          Fireside Chat
         </TemporaryButton>
         <br />
         <br />
         <TemporaryButton onClick={() => this.snowDisplayToggle()}>
-          Make it snow
+          Let it Snow
         </TemporaryButton>
         <br />
         <br />
         <TemporaryButton onClick={() => this.eggnogToggle()}>
-          Have egg nog: TODO
+          Chug some Nog
         </TemporaryButton>
-        {(this.state.fireVisible && <Fireplace visible={this.state.fireVisible} />)}
+        <Fireplace visible={this.state.fireVisible} />
         {(this.state.isSnowing &&
           <Snow
             isSnowing={this.state.isSnowing}
