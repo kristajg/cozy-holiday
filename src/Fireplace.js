@@ -3,46 +3,58 @@ import styled, { keyframes } from 'styled-components';
 import fire from './assets/fire.gif';
 import cracklingSound from './assets/crackling_fire.mp3';
 
-const animateSizeUp = keyframes`
+const slideInFromLeft = keyframes`
   0% {
-    height: 128px;
-    width: 128px;
+    left: -128px;
+  }
+  80% {
+    left: 35px;
+  }
+  90% {
+    left: 15px;
   }
   100% {
-    height: 168px;
-    width: 168px;
+    left: 20px;
   }
 `;
 
-const animateSizeDown = keyframes`
+const slideOut = keyframes`
   0% {
-    height: 168px;
-    width: 168px;
+    left: 20px;
+  }
+  20% {
+    left: 30px;
   }
   100% {
-    height: 128px;
-    width: 128px;
+    left: -128px;
   }
 `;
 
 const FireplaceWrapper = styled.div`
-  display: ${props => props.visible ? 'block' : 'none'};
-`;
-
-const FireplaceImage = styled.img`
   position: absolute;
+  left: ${props => props.visible ? '20' : '-128'}px;
   bottom: 20px;
-  left: 20px;
   height: 128px;
   width: 128px;
+  animation: ${props => props.visible ? slideInFromLeft : slideOut} 900ms ease;
 `;
 
-// TODO: animate in from lower-left using keyframes
-// TODO: animate size change on mouseover
+const FireImage = styled.img`
+  position: relative;
+  height: 128px;
+  width: 128px;
+  -webkit-transition: width 600ms, height 600ms;
+  transition: width 600ms, height 600ms;
+
+  &:hover {
+    width: 138px;
+    height: 138px;
+  }
+`;
 
 class Fireplace extends Component {
   state = {
-    animateFireSize: false,
+    mouseIsHovered: false,
   };
 
   componentDidUpdate(prevProps) {
@@ -58,20 +70,19 @@ class Fireplace extends Component {
     }
   }
 
-  toggleSizeAnimation = () => {
-    console.log('umm')
-    this.setState({ animateFireSize: !this.state.animateFireSize });
-  }
+  mouseOut = () => this.setState({ mouseIsHovered: false });
+  
+  mouseOver = () => this.setState({ mouseIsHovered: true });
 
   render() {
     return (
       <FireplaceWrapper visible={this.props.visible}>
-        <FireplaceImage
+        <FireImage
           src={fire}
           alt="Fireplace"
-          onMouseEnter={() => this.toggleSizeAnimation()}
-          onMouseLeave={() => this.toggleSizeAnimation()}
-          animateFireSize={this.state.animateFireSize}
+          mouseIsHovered={this.state.mouseIsHovered}
+          onMouseOut={() => this.mouseOut()}
+          onMouseOver={() => this.mouseOver()}
         />
         <audio id='fireplace-audio' src={cracklingSound} loop />
       </FireplaceWrapper>

@@ -61,6 +61,7 @@ class App extends PureComponent {
   };
 
   fireDisplayToggle = () => {
+    console.log('wtf hey?')
     this.setState({ fireVisible: !this.state.fireVisible });
   };
 
@@ -73,6 +74,7 @@ class App extends PureComponent {
   }
 
   render() {
+    console.log('uhhh what ', this.state.fireVisible);
     return (
       <CozyHolidayWrapper>
         Welcome to the Cozy Holiday Experience
