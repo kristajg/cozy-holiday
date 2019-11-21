@@ -39,8 +39,6 @@ const SnowflakeStyle = styled.div`
   animation-timing-function: linear;
 `;
 
-
-
 const Snowflake = ({
   flakeShape,
   screenHeight,

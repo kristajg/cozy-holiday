@@ -2,6 +2,8 @@ import React, { PureComponent } from 'react';
 import styled, { keyframes } from 'styled-components';
 import Fireplace from './Fireplace';
 import Snow from './components/snow/Snow';
+import Eggnog from './components/eggnog/Eggnog';
+import Lights from './components/lights/Lights';
 
 const fadeIn = keyframes`
   0% {
@@ -19,22 +21,39 @@ const fadeIn = keyframes`
 
 const CozyHolidayWrapper = styled.div`
   text-align: center;
-  padding-top: 15%;
+  animation: ${fadeIn} 1.5s ease-in-out;
+  margin-top: 5%;
   font-family: 'Press Start 2P', cursive;
-  font-size: 18px;
   color: #fff;
-  animation: ${fadeIn} 1.7s ease-in-out;
+`;
+
+const CozyHolidayPanel = styled.div`
+  margin: 0 auto 25px auto;
+  padding: 25px;
+  font-size: 18px;
+  width: 60%;
+  border: 2px solid #fff;
+  border-radius: 2px;
+
+  @media only screen and (max-width: 600px) {
+    width: 75%;
+  }
+`;
+
+const PanelTitle = styled.div`
+  padding-bottom: 20px;
+  line-height: 24px;
 `;
 
 const TemporaryButton = styled.div`
   margin: 0 auto;
   text-align: center;
   vertical-align: middle;
-  width: 380px;
+  width: 350px;
   height: 60px;
   border: 2px solid #fff;
   border-radius: 4px;
-  background-color: #ff8494;
+  background-color: #ff0012;
   font-family: 'Press Start 2P', cursive;
   line-height: 60px;
   color: #fff;
@@ -56,12 +75,12 @@ class App extends PureComponent {
   state = {
     fireVisible: false,
     isSnowing: false,
-    showEggnog: false,
+    eggnogVisible: false,
+    lightsVisible: false,
     snowIntensity: 'mild', // number of snowflakes, decides snowing intensity. TODO: accept snowIntensity as a prop: mild, flurry, blizzard
   };
 
   fireDisplayToggle = () => {
-    console.log('wtf hey?')
     this.setState({ fireVisible: !this.state.fireVisible });
   };
 
@@ -69,31 +88,45 @@ class App extends PureComponent {
     this.setState({ isSnowing: !this.state.isSnowing });
   };
 
-  eggnogToggle = () => {
-    this.setState({ showEggnog: !this.state.showEggnog });
+  eggnogDisplayToggle = () => {
+    this.setState({ eggnogVisible: !this.state.eggnogVisible });
+  }
+
+  stringlightsDisplayToggle = () => {
+    this.setState({ lightsVisible: !this.state.lightsVisible });
   }
 
   render() {
-    console.log('uhhh what ', this.state.fireVisible);
     return (
       <CozyHolidayWrapper>
-        Welcome to the Cozy Holiday Experience
-        <br />
-        <br />
-        <br />
-        <TemporaryButton onClick={() => this.fireDisplayToggle()}>
-          Fireside Chat
-        </TemporaryButton>
-        <br />
-        <br />
-        <TemporaryButton onClick={() => this.snowDisplayToggle()}>
-          Let it Snow
-        </TemporaryButton>
-        <br />
-        <br />
-        <TemporaryButton onClick={() => this.eggnogToggle()}>
-          Chug some Nog
-        </TemporaryButton>
+        {/* Temporary Panel for dev & demo */}
+        <CozyHolidayPanel>
+          <PanelTitle>
+            Welcome to the Cozy Holiday Experience
+          </PanelTitle>
+          <br />
+          <br />
+          <TemporaryButton onClick={() => this.fireDisplayToggle()}>
+            Fireside
+          </TemporaryButton>
+          <br />
+          <br />
+          <TemporaryButton onClick={() => this.snowDisplayToggle()}>
+            Snow
+          </TemporaryButton>
+          <br />
+          <br />
+          <TemporaryButton onClick={() => this.eggnogDisplayToggle()}>
+            Nog
+          </TemporaryButton>
+          <br />
+          <br />
+          <TemporaryButton onClick={() => this.stringlightsDisplayToggle()}>
+            TODO: Lights
+          </TemporaryButton>
+        </CozyHolidayPanel>
+
+        {/* Display content and animations */}
         <Fireplace visible={this.state.fireVisible} />
         {(this.state.isSnowing &&
           <Snow
@@ -101,6 +134,8 @@ class App extends PureComponent {
             snowIntensity={this.state.snowIntensity}
           />
         )}
+        <Eggnog visible={this.state.eggnogVisible} />
+        <Lights visible={this.state.lightsVisible} />
       </CozyHolidayWrapper>
     );
   }

@@ -62,7 +62,7 @@ class Fireplace extends Component {
     const audio = document.getElementById('fireplace-audio');
     if (visible && prevProps.visible !== visible) {
       if (audio instanceof HTMLAudioElement) {
-        audio.volume = 0.3;
+        audio.volume = 0.2;
         audio.play();
       }
     } else if (prevProps.visible !== visible) {
