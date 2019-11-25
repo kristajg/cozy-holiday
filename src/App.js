@@ -1,10 +1,14 @@
+// Third party libraries
 import React, { PureComponent } from 'react';
 import styled, { keyframes } from 'styled-components';
-import Fireplace from './Fireplace';
+
+// Holiday components
+import Fireplace from './components/fireplace/Fireplace';
 import Snow from './components/snow/Snow';
 import Eggnog from './components/eggnog/Eggnog';
 import Lights from './components/lights/Lights';
 
+// Development / demo animations and styling
 const fadeIn = keyframes`
   0% {
     opacity: 0;
@@ -26,7 +30,6 @@ const CozyHolidayWrapper = styled.div`
   font-family: 'Press Start 2P', cursive;
   color: #fff;
 `;
-
 
 const CozyHolidayPanel = styled.div`
   margin: 0 auto 25px auto;

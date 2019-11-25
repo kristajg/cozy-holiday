@@ -36,6 +36,11 @@ const LightsContainer = styled.div`
   top: ${props => props.visible ? '-3' : '-55'}px;
   left: -10px;
   animation: ${props => props.visible ? slideInFromTop : slideOut} 800ms ease;
+
+  @media only screen and (max-width: 600px) {
+    background-size: 215px;
+    left: -15px;
+  }
 `;
 
 const Lights = ({ visible }) => <LightsContainer visible={visible} />;

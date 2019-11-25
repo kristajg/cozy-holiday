@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import styled, { keyframes } from 'styled-components';
-import fire from './assets/fire.gif';
-import cracklingSound from './assets/crackling_fire.mp3';
+import fire from '../../assets/fire.gif';
+import cracklingSound from '../../assets/crackling_fire.mp3';
 
 const slideInFromLeft = keyframes`
   0% {
