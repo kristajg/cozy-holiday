@@ -1,9 +1,29 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import lights from '../../assets/festive_lights.png';
 
-const LightsWrapper = styled.div`
-  display: ${props => props.visible ? 'block' : 'none'};
+const slideInFromTop = keyframes`
+  0% {
+    top: -55px;
+  }
+  80% {
+    top: 8px;
+  }
+  100% {
+    top: -3px;
+  }
+`;
+
+const slideOut = keyframes`
+  0% {
+    top: -3px;
+  }
+  20% {
+    top: 8px;
+  }
+  100% {
+    top: -55px;
+  }
 `;
 
 const LightsContainer = styled.div`
@@ -13,15 +33,11 @@ const LightsContainer = styled.div`
   width: 100%;
   height: 55px;
   position: absolute;
-  top: -3px;
+  top: ${props => props.visible ? '-3' : '-55'}px;
   left: -10px;
-  overflow: hidden;
+  animation: ${props => props.visible ? slideInFromTop : slideOut} 800ms ease;
 `;
 
-const Lights = ({ visible }) => (
-  <LightsWrapper visible={visible}>
-    <LightsContainer />
-  </LightsWrapper>
-);
+const Lights = ({ visible }) => <LightsContainer visible={visible} />;
 
 export default Lights;
