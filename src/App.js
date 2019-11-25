@@ -27,6 +27,7 @@ const CozyHolidayWrapper = styled.div`
   color: #fff;
 `;
 
+
 const CozyHolidayPanel = styled.div`
   margin: 0 auto 25px auto;
   padding: 25px;
@@ -122,7 +123,7 @@ class App extends PureComponent {
           <br />
           <br />
           <TemporaryButton onClick={() => this.stringlightsDisplayToggle()}>
-            TODO: Lights
+            Lights
           </TemporaryButton>
         </CozyHolidayPanel>
 
