@@ -1,60 +1,94 @@
-import React from 'react';
-import nog from '../../assets/nog.png';
+// Third party libararies
+import React, { Component } from 'react';
 import styled, { keyframes } from 'styled-components';
 
-// const slideInFromRight = keyframes`
-//   0% {
-//     right: -138px;
-//   }
-//   80% {
-//     right: 35px;
-//   }
-//   90% {
-//     right: 15px;
-//   }
-//   100% {
-//     right: 20px;
-//   }
-// `;
+// Pixel asset imports
+import Nog0 from '../../assets/nog/sprite_0.png';
+import Nog1 from '../../assets/nog/sprite_1.png';
+import Nog2 from '../../assets/nog/sprite_2.png';
+import Nog3 from '../../assets/nog/sprite_3.png';
+import Nog4 from '../../assets/nog/sprite_4.png';
 
-// const slideOut = keyframes`
-//   0% {
-//     right: 20px;
-//   }
-//   20% {
-//     right: 30px;
-//   }
-//   100% {
-//     right: -138px;
-//   }
-// `;
+const slideInFromRight = keyframes`
+  0% {
+    right: -250px;
+  }
+  80% {
+    right: 20px;
+  }
+  90% {
+    right: -5px;
+  }
+  100% {
+    right: 5px;
+  }
+`;
+
+const slideOut = keyframes`
+  0% {
+    right: 5px;
+  }
+  20% {
+    right: 20px;
+  }
+  100% {
+    right: -250px;
+  }
+`;
 
 const NogWrapper = styled.div`
   position: absolute;
-  right: 0;
-  bottom: 54%;
-  width: 280px;
+  right: ${props => props.visible ? '0' : '-280'}px;
+  bottom: 20px;
+  width: 250px;
   height: auto;
-  display: ${props => props.visible ? 'block' : 'none'};
+  animation: ${props => props.visible ? slideInFromRight : slideOut} 900ms ease;
+  cursor: pointer;
 `;
 
 const NogImage = styled.img`
   position: relative;
-  width: 280px;
+  width: 190px;
   height: auto;
   -webkit-transition: width 600ms, height 600ms;
   transition: width 600ms, height 600ms;
 
   &:hover {
-    width: 255px;
+    width: 230px;
     height: auto;
   }
 `;
 
-const Eggnog = ({ visible }) => (
-  <NogWrapper visible={visible}>
-    <NogImage src={nog} alt="Cup of eggnog" />
-  </NogWrapper>
-);
+const nogImages = [
+  Nog0,
+  Nog1,
+  Nog2,
+  Nog3,
+  Nog4,
+];
+
+class Eggnog extends Component {
+  state = {
+    nogStep: 0,
+    nogImage: Nog0,
+  };
+
+  changeNogStepOnClick = () => {
+    const { nogStep } = this.state;
+    let newStep = nogStep;
+    nogStep === 4 ? newStep = 0 : newStep += 1;
+    this.setState({ nogStep: newStep, nogImage: nogImages[newStep] });
+  }
+
+  render() {
+    const { visible } = this.props;
+    const { nogImage } = this.state;
+    return (
+      <NogWrapper visible={visible} onClick={() => this.changeNogStepOnClick()}>
+        <NogImage src={nogImage} alt="Cup of eggnog" />
+      </NogWrapper>
+    );
+  }
+}
 
 export default Eggnog;

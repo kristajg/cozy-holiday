@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import styled, { keyframes } from 'styled-components';
 import fire from '../../assets/fire.gif';
-import cracklingSound from '../../assets/crackling_fire.mp3';
+import cracklingSound from '../../assets/crackling_fire_hq.mp3';
 
 const slideInFromLeft = keyframes`
   0% {
@@ -45,11 +45,6 @@ const FireImage = styled.img`
   width: 128px;
   -webkit-transition: width 600ms, height 600ms;
   transition: width 600ms, height 600ms;
-
-  &:hover {
-    width: 138px;
-    height: 138px;
-  }
 `;
 
 class Fireplace extends Component {
@@ -62,7 +57,7 @@ class Fireplace extends Component {
     const audio = document.getElementById('fireplace-audio');
     if (visible && prevProps.visible !== visible) {
       if (audio instanceof HTMLAudioElement) {
-        audio.volume = 0.2;
+        audio.volume = 0.4;
         audio.play();
       }
     } else if (prevProps.visible !== visible) {
