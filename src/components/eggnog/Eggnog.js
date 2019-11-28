@@ -38,25 +38,26 @@ const slideOut = keyframes`
 
 const NogWrapper = styled.div`
   position: absolute;
-  right: ${props => props.visible ? '0' : '-280'}px;
-  bottom: 20px;
-  width: 250px;
-  height: auto;
-  animation: ${props => props.visible ? slideInFromRight : slideOut} 900ms ease;
+  bottom: 20px
+  right: 0px;
+  width: 190px;
+  max-width: 100%;
+  height: 265px;
+  overflow: hidden;
   cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
 `;
 
 const NogImage = styled.img`
-  position: relative;
+  position: absolute;
+  right: ${props => props.visible ? '0' : '-280'}px;
+
   width: 190px;
   height: auto;
+  animation: ${props => props.visible ? slideInFromRight : slideOut} 900ms ease;
+
   -webkit-transition: width 600ms, height 600ms;
   transition: width 600ms, height 600ms;
-
-  &:hover {
-    width: 230px;
-    height: auto;
-  }
 `;
 
 const nogImages = [
@@ -84,8 +85,8 @@ class Eggnog extends Component {
     const { visible } = this.props;
     const { nogImage } = this.state;
     return (
-      <NogWrapper visible={visible} onClick={() => this.changeNogStepOnClick()}>
-        <NogImage src={nogImage} alt="Cup of eggnog" />
+      <NogWrapper onClick={() => this.changeNogStepOnClick()}>
+        <NogImage visible={visible} src={nogImage} alt="Cup of eggnog" />
       </NogWrapper>
     );
   }
