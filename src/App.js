@@ -7,6 +7,8 @@ import Fireplace from './components/fireplace/Fireplace';
 import Snow from './components/snow/Snow';
 import Eggnog from './components/eggnog/Eggnog';
 import Lights from './components/lights/Lights';
+import Cat from './components/cat/Cat';
+import Navigation from './components/navigation/Navigation';
 
 // Development / demo animations and styling
 const fadeIn = keyframes`
@@ -77,10 +79,12 @@ const TemporaryButton = styled.div`
 
 class App extends PureComponent {
   state = {
+    navigationVisible: false,
     fireVisible: false,
     isSnowing: false,
     eggnogVisible: false,
     lightsVisible: false,
+    catVisible: false,
     snowIntensity: 'mild', // number of snowflakes, decides snowing intensity. TODO: accept snowIntensity as a prop: mild, flurry, blizzard
   };
 
@@ -98,6 +102,14 @@ class App extends PureComponent {
 
   stringlightsDisplayToggle = () => {
     this.setState({ lightsVisible: !this.state.lightsVisible });
+  }
+
+  catDisplayToggle = () => {
+    this.setState({ catVisible: !this.state.catVisible });
+  }
+
+  navigationToggle = () => {
+    this.setState({ navigationVisible: !this.state.navigationVisible });
   }
 
   render() {
@@ -128,6 +140,11 @@ class App extends PureComponent {
           <TemporaryButton onClick={() => this.stringlightsDisplayToggle()}>
             Lights
           </TemporaryButton>
+          <br />
+          <br />
+          <TemporaryButton onClick={() => this.catDisplayToggle()}>
+            Cat
+          </TemporaryButton>
         </CozyHolidayPanel>
 
         {/* Display content and animations */}
@@ -140,6 +157,10 @@ class App extends PureComponent {
         )}
         <Eggnog visible={this.state.eggnogVisible} />
         <Lights visible={this.state.lightsVisible} />
+        <Cat visible={this.state.catVisible} />
+
+        {/* Actual tray for library */}
+        <Navigation visible={this.state.navigationVisible} toggle={this.navigationToggle} />
       </CozyHolidayWrapper>
     );
   }
