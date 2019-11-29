@@ -1,5 +1,6 @@
 // Third party libraries
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import styled, { keyframes } from 'styled-components';
 
 // Assets
@@ -82,32 +83,48 @@ const optionsMap = [
   {
     name: 'fire',
     icon: fireIcon,
-    onClick: () => {},
-  }
+    toggleAction: 'fireVisible',
+  },
+  {
+    name: 'snow',
+    // icon: snowIcon,
+    toggleAction: 'snowVisible',
+  },
+  {
+    name: 'eggnog',
+    // icon: eggnogIcon,
+    toggleAction: 'eggnogVisible',
+  },
+  {
+    name: 'lights',
+    // icon: lightsIcon,
+    toggleAction: 'lightsVisible',
+  },
+  {
+    name: 'cat',
+    // icon: catIcon,
+    toggleAction: 'catVisible',
+  },
 ];
 
 class Navigation extends Component {
-  renderOptions = () => {
-    return (
-
-    );
-  }
-
   render() {
-    const { visible, toggle, options } = this.props;
+    const { visible, toggle } = this.props;
+    // Filter out iconsToHide if it's present
+    // TODO: handle error if all icons are hidden
     return (
       <NavigationWrapper visible={visible}>
-        <Tab onClick={() => toggle()}>
+        <Tab onClick={() => toggle('navigationVisible')}>
           <img src={visible ? arrowUp : arrowDown} alt="arrow icon" />
         </Tab>
         <Tray>
           <IconList>
-            {options && options.map(option => (
+            {optionsMap.map(option => (
               <ListItem>
-                <div>
-                  
-                </div>
-                {/* <Icon src={fireIcon} alt="fire icon" /> */}
+                {option.icon ?
+                  (<Icon src={option.icon} alt={`${option.name} icon`} onClick={() => toggle(option.toggleAction)} />) : 
+                  (<div onClick={() => toggle(option.toggleAction)}>{option.name}</div>)
+                }
               </ListItem>
             ))}
           </IconList>
@@ -116,5 +133,11 @@ class Navigation extends Component {
     );
   } 
 }
+
+Navigation.propTypes = {
+  visible: PropTypes.bool.isRequired,
+  toggle: PropTypes.func.isRequired,
+  iconsToHide: PropTypes.array,
+};
 
 export default Navigation;

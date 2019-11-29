@@ -81,35 +81,19 @@ class App extends PureComponent {
   state = {
     navigationVisible: false,
     fireVisible: false,
-    isSnowing: false,
+    snowVisible: false,
     eggnogVisible: false,
     lightsVisible: false,
     catVisible: false,
     snowIntensity: 'mild', // number of snowflakes, decides snowing intensity. TODO: accept snowIntensity as a prop: mild, flurry, blizzard
   };
 
-  fireDisplayToggle = () => {
-    this.setState({ fireVisible: !this.state.fireVisible });
-  };
-
-  snowDisplayToggle = () => {
-    this.setState({ isSnowing: !this.state.isSnowing });
-  };
-
-  eggnogDisplayToggle = () => {
-    this.setState({ eggnogVisible: !this.state.eggnogVisible });
-  }
-
-  stringlightsDisplayToggle = () => {
-    this.setState({ lightsVisible: !this.state.lightsVisible });
-  }
-
-  catDisplayToggle = () => {
-    this.setState({ catVisible: !this.state.catVisible });
-  }
-
   navigationToggle = () => {
     this.setState({ navigationVisible: !this.state.navigationVisible });
+  }
+
+  genericToggle = toggleItem => {
+    this.setState({ [toggleItem]: !this.state[toggleItem] });
   }
 
   render() {
@@ -120,38 +104,36 @@ class App extends PureComponent {
           <PanelTitle>
             Welcome to the Cozy Holiday Experience
           </PanelTitle>
-          <br />
-          <br />
-          <TemporaryButton onClick={() => this.fireDisplayToggle()}>
+          <TemporaryButton onClick={() => this.genericToggle('fireVisible')}>
             Fireside
           </TemporaryButton>
           <br />
           <br />
-          <TemporaryButton onClick={() => this.snowDisplayToggle()}>
+          <TemporaryButton onClick={() => this.genericToggle('snowVisible')}>
             Snow
           </TemporaryButton>
           <br />
           <br />
-          <TemporaryButton onClick={() => this.eggnogDisplayToggle()}>
+          <TemporaryButton onClick={() => this.genericToggle('eggnogVisible')}>
             Nog
           </TemporaryButton>
           <br />
           <br />
-          <TemporaryButton onClick={() => this.stringlightsDisplayToggle()}>
+          <TemporaryButton onClick={() => this.genericToggle('lightsVisible')}>
             Lights
           </TemporaryButton>
           <br />
           <br />
-          <TemporaryButton onClick={() => this.catDisplayToggle()}>
+          <TemporaryButton onClick={() => this.genericToggle('catVisible')}>
             Cat
           </TemporaryButton>
         </CozyHolidayPanel>
 
         {/* Display content and animations */}
         <Fireplace visible={this.state.fireVisible} />
-        {(this.state.isSnowing &&
+        {(this.state.snowVisible &&
           <Snow
-            isSnowing={this.state.isSnowing}
+            isSnowing={this.state.snowVisible}
             snowIntensity={this.state.snowIntensity}
           />
         )}
@@ -160,7 +142,11 @@ class App extends PureComponent {
         <Cat visible={this.state.catVisible} />
 
         {/* Actual tray for library */}
-        <Navigation visible={this.state.navigationVisible} toggle={this.navigationToggle} />
+        {/* <Navigation
+          visible={this.state.navigationVisible}
+          toggle={this.genericToggle}
+          iconsToHide={['fire']}
+        /> */}
       </CozyHolidayWrapper>
     );
   }
