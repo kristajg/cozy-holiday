@@ -1,5 +1,9 @@
+// Third party libraries
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import styled, { keyframes } from 'styled-components';
+
+// Asset imports
 import fire from '../../assets/fire.gif';
 import cracklingSound from '../../assets/crackling_fire_hq.mp3';
 
@@ -84,5 +88,10 @@ class Fireplace extends Component {
     );
   }
 }
+
+Fireplace.propTypes = {
+  visible: PropTypes.bool.isRequired,
+};
+
 
 export default Fireplace;

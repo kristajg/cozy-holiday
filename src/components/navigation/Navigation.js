@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled, { keyframes } from 'styled-components';
 
-// Assets
+// Pixel assets
 import arrowUp from '../../assets/icons/arrow_up.png';
 import arrowDown from '../../assets/icons/arrow_down.png';
 import fireIcon from '../../assets/icons/fire_icon.png';

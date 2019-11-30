@@ -1,5 +1,6 @@
 // Third party libararies
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import styled, { keyframes } from 'styled-components';
 
 // Pixel asset imports
@@ -91,5 +92,9 @@ class Eggnog extends Component {
     );
   }
 }
+
+Eggnog.propTypes = {
+  visible: PropTypes.bool.isRequired,
+};
 
 export default Eggnog;

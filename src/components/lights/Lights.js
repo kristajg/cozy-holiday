@@ -1,5 +1,9 @@
+// Third party libararies
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled, { keyframes } from 'styled-components';
+
+// Pixel asset imports
 import lights from '../../assets/festive_lights.png';
 
 const slideInFromTop = keyframes`
@@ -44,5 +48,9 @@ const LightsContainer = styled.div`
 `;
 
 const Lights = ({ visible }) => <LightsContainer visible={visible} />;
+
+Lights.propTypes = {
+  visible: PropTypes.bool.isRequired,
+};
 
 export default Lights;
