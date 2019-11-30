@@ -33,7 +33,7 @@ const slideOut = keyframes`
 const FireplaceWrapper = styled.div`
   position: absolute;
   left: ${props => props.visible ? '20' : '-128'}px;
-  bottom: 20px;
+  bottom: 100px;
   height: 128px;
   width: 128px;
   animation: ${props => props.visible ? slideInFromLeft : slideOut} 900ms ease;

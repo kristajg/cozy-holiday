@@ -45,14 +45,19 @@ const NavigationWrapper = styled.div`
 const Tab = styled.div`
   position: absolute;
   right: 60px;
-  top: -45px;
-  padding-top: 7px;
-  width: 100px;
+  top: -40px;
+  padding-top: 5px;
+  width: 70px;
   height: auto;
   background-color: #282828;
   border-top-right-radius: 2px;
   border-top-left-radius: 2px;
   cursor: pointer;
+`;
+
+const TabImage = styled.img`
+  width: 40px;
+  height: auto;
 `;
 
 const Tray = styled.div``;
@@ -80,7 +85,7 @@ const Icon = styled.img`
   }
 `;
 
-const optionsMap = [
+const options = [
   {
     name: 'fire',
     icon: fireIcon,
@@ -108,25 +113,21 @@ const optionsMap = [
   },
 ];
 
-const filterOptions = () => {
-
-};
-// optionsMap = optionsMap.filter()
+const filterOptions = removeOptions => options.filter(option => removeOptions.indexOf(option.name) < 0);
 
 class Navigation extends Component {
   render() {
-    const { visible, toggle } = this.props;
-    // Filter out iconsToHide if it's present
-    // TODO: handle error if all icons are hidden
+    const { visible, toggle, hideIcons = [] } = this.props;
+    const optionsToShow = hideIcons.length ? filterOptions(hideIcons) : options;
     return (
       <NavigationWrapper visible={visible}>
         <Tab onClick={() => toggle('navigationVisible')}>
-          <img src={visible ? arrowUp : arrowDown} alt="arrow icon" />
+          <TabImage src={visible ? arrowUp : arrowDown} alt="arrow icon" />
         </Tab>
         <Tray>
           <IconList>
-            {optionsMap.map(option => (
-              <ListItem>
+            {optionsToShow.map(option => (
+              <ListItem key={option.name}>
                 <Icon src={option.icon} alt={`${option.name} icon`} onClick={() => toggle(option.toggleAction)} />
               </ListItem>
             ))}
@@ -140,7 +141,7 @@ class Navigation extends Component {
 Navigation.propTypes = {
   visible: PropTypes.bool.isRequired,
   toggle: PropTypes.func.isRequired,
-  iconsToHide: PropTypes.array,
+  hideIcons: PropTypes.array,
 };
 
 export default Navigation;

@@ -141,7 +141,7 @@ class App extends PureComponent {
         <Navigation
           visible={this.state.navigationVisible}
           toggle={this.genericToggle}
-          iconsToHide={['cat']}
+          // hideIcons={['cat', 'fire']}
         />
       </CozyHolidayWrapper>
     );

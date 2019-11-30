@@ -38,7 +38,7 @@ const slideOut = keyframes`
 
 const NogWrapper = styled.div`
   position: absolute;
-  bottom: 20px
+  bottom: 110px
   right: 0px;
   width: 190px;
   max-width: 100%;
