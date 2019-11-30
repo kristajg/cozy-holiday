@@ -37,9 +37,9 @@ const LightsContainer = styled.div`
   width: 100%;
   height: 55px;
   position: absolute;
-  top: ${props => props.visible ? '-3' : '-55'}px;
+  top: ${props => (props.visible ? '-3' : '-55')}px;
   left: -10px;
-  animation: ${props => props.visible ? slideInFromTop : slideOut} 800ms ease;
+  animation: ${props => (props.visible ? slideInFromTop : slideOut)} 800ms ease;
 
   @media only screen and (max-width: 600px) {
     background-size: 215px;

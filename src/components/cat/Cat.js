@@ -7,7 +7,7 @@ import styled from 'styled-components';
 import cat from '../../assets/cat.gif';
 
 const CatWrapper = styled.div`
-  display: ${props => props.visible ? 'block' : 'none'};
+  display: ${props => (props.visible ? 'block' : 'none')};
   position: absolute;
   bottom: 65px;
   left: 155px;
@@ -18,7 +18,7 @@ class Cat extends Component {
     const { visible } = this.props;
     return (
       <CatWrapper visible={visible}>
-        <img src={cat} alt='Cat' />
+        <img src={cat} alt="Cat" />
       </CatWrapper>
     );
   }

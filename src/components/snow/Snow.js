@@ -1,4 +1,8 @@
+// Third party libraries
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+
+// Components
 import Snowflake from './Snowflake';
 
 const snowIntensityConfig = {
@@ -7,11 +11,12 @@ const snowIntensityConfig = {
   blizzard: 125,
 };
 
-const randomizeXPostion = screenWidth => Math.floor((Math.random() * screenWidth) + 0);
+const randomizeXPostion = screenWidth =>
+  Math.floor(Math.random() * screenWidth + 0);
 
-const randomizeFallingSpeed = () => Math.floor((Math.random() * 5) + 0);
+const randomizeFallingSpeed = () => Math.floor(Math.random() * 5 + 0);
 
-const randomizeSwayPercent = () => Math.floor((Math.random() * 60) + 20);
+const randomizeSwayPercent = () => Math.floor(Math.random() * 60 + 20);
 
 class Snow extends Component {
   state = {
@@ -19,32 +24,32 @@ class Snow extends Component {
     screenHeight: 0,
     flakeShape: 'round', // options are square or round (for now)
   };
-  
+
   componentDidMount() {
     this.updateWindowDimensions();
     window.addEventListener('resize', this.updateWindowDimensions);
   }
-  
+
   componentWillUnmount() {
     window.removeEventListener('resize', this.updateWindowDimensions);
   }
-  
+
   updateWindowDimensions = () => {
     this.setState({
       screenWidth: window.innerWidth,
       screenHeight: window.innerHeight,
     });
-  }
+  };
 
   startSnow = () => {
     let allFlakes = [];
     let numSnowflakes = snowIntensityConfig[this.props.snowIntensity];
-    for (let i=0; i<numSnowflakes; i++) {
-      let flakeShape = Boolean(i%2) ? 'round' : 'square';
+    for (let i = 0; i < numSnowflakes; i++) {
+      let flakeShape = Boolean(i % 2) ? 'round' : 'square';
       allFlakes.push(this.renderFlake(i, flakeShape));
     }
     return allFlakes;
-  }
+  };
 
   renderFlake = (key, flakeShape) => {
     const { screenHeight, screenWidth } = this.state;
@@ -58,15 +63,15 @@ class Snow extends Component {
         swayTiming={randomizeSwayPercent()}
       />
     );
-  }
+  };
 
-  render() {   
-    return (
-      <div>
-        {this.startSnow()}
-      </div>
-    );
+  render() {
+    return <div>{this.startSnow()}</div>;
   }
 }
+
+Snow.propTypes = {
+  snowIntensity: PropTypes.string,
+};
 
 export default Snow;

@@ -55,12 +55,12 @@ const TemporaryButton = styled.div`
   line-height: 60px;
   color: #fff;
   cursor: pointer;
-  -webkit-box-shadow: 0px 0px 7px 0px rgba(103,103,103,1);
-  -moz-box-shadow: 0px 0px 7px 0px rgba(103,103,103,1);
-  box-shadow: 0px 0px 7px 0px rgba(103,103,103,1);
+  -webkit-box-shadow: 0px 0px 7px 0px rgba(103, 103, 103, 1);
+  -moz-box-shadow: 0px 0px 7px 0px rgba(103, 103, 103, 1);
+  box-shadow: 0px 0px 7px 0px rgba(103, 103, 103, 1);
 
   &:hover {
-    opacity: .9;
+    opacity: 0.9;
   }
 
   @media only screen and (max-width: 600px) {
@@ -74,9 +74,7 @@ class Demo extends Component {
       <CozyHolidayWrapper>
         {/* Panel for dev & demo */}
         <CozyHolidayPanel>
-          <PanelTitle>
-            Welcome to the Cozy Holiday Experience
-          </PanelTitle>
+          <PanelTitle>Welcome to the Cozy Holiday Experience</PanelTitle>
           <TemporaryButton onClick={() => this.genericToggle('fireVisible')}>
             Fireside
           </TemporaryButton>

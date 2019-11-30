@@ -36,11 +36,11 @@ const slideOut = keyframes`
 
 const FireplaceWrapper = styled.div`
   position: absolute;
-  left: ${props => props.visible ? '20' : '-128'}px;
+  left: ${props => (props.visible ? '20' : '-128')}px;
   bottom: 100px;
   height: 128px;
   width: 128px;
-  animation: ${props => props.visible ? slideInFromLeft : slideOut} 900ms ease;
+  animation: ${props => (props.visible ? slideInFromLeft : slideOut)} 900ms ease;
 `;
 
 const FireImage = styled.img`
@@ -70,7 +70,7 @@ class Fireplace extends Component {
   }
 
   mouseOut = () => this.setState({ mouseIsHovered: false });
-  
+
   mouseOver = () => this.setState({ mouseIsHovered: true });
 
   render() {
@@ -83,7 +83,7 @@ class Fireplace extends Component {
           onMouseOut={() => this.mouseOut()}
           onMouseOver={() => this.mouseOver()}
         />
-        <audio id='fireplace-audio' src={cracklingSound} loop />
+        <audio id="fireplace-audio" src={cracklingSound} loop />
       </FireplaceWrapper>
     );
   }
@@ -92,6 +92,5 @@ class Fireplace extends Component {
 Fireplace.propTypes = {
   visible: PropTypes.bool.isRequired,
 };
-
 
 export default Fireplace;

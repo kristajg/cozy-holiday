@@ -51,23 +51,18 @@ const NogWrapper = styled.div`
 
 const NogImage = styled.img`
   position: absolute;
-  right: ${props => props.visible ? '0' : '-280'}px;
+  right: ${props => (props.visible ? '0' : '-280')}px;
 
   width: 190px;
   height: auto;
-  animation: ${props => props.visible ? slideInFromRight : slideOut} 900ms ease;
+  animation: ${props => (props.visible ? slideInFromRight : slideOut)} 900ms
+    ease;
 
   -webkit-transition: width 600ms, height 600ms;
   transition: width 600ms, height 600ms;
 `;
 
-const nogImages = [
-  Nog0,
-  Nog1,
-  Nog2,
-  Nog3,
-  Nog4,
-];
+const nogImages = [Nog0, Nog1, Nog2, Nog3, Nog4];
 
 class Eggnog extends Component {
   state = {
@@ -78,9 +73,9 @@ class Eggnog extends Component {
   changeNogStepOnClick = () => {
     const { nogStep } = this.state;
     let newStep = nogStep;
-    nogStep === 4 ? newStep = 0 : newStep += 1;
+    nogStep === 4 ? (newStep = 0) : (newStep += 1);
     this.setState({ nogStep: newStep, nogImage: nogImages[newStep] });
-  }
+  };
 
   render() {
     const { visible } = this.props;

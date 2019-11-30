@@ -1,4 +1,6 @@
+// Third party libraries
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled, { keyframes } from 'styled-components';
 
 const animateSnowFromTopDown = ({ screenHeight }) => keyframes`
@@ -16,7 +18,7 @@ const flipSnow = keyframes`
   }
 `;
 
-const swaySnow = ({swayTiming, secondSwayTiming, xPosition }) => keyframes`
+const swaySnow = ({ swayTiming, xPosition }) => keyframes`
   ${swayTiming}% {
     left: calc(${xPosition}px - 3%);
   }
@@ -33,8 +35,10 @@ const SnowflakeStyle = styled.div`
   width: 5px;
   overflow: hidden;
   background-color: #fff;
-  border-radius: ${props => props.isRound ? '50%' : '0'};
-  animation: ${props => animateSnowFromTopDown(props)} infinite 5s, ${props => swaySnow(props)} infinite 5s ease-in-out, ${flipSnow} infinite 2.5s;
+  border-radius: ${props => (props.isRound ? '50%' : '0')};
+  animation: ${props => animateSnowFromTopDown(props)} infinite 5s,
+    ${props => swaySnow(props)} infinite 5s ease-in-out,
+    ${flipSnow} infinite 2.5s;
   animation-delay: ${props => props.delay}s;
   animation-timing-function: linear;
 `;
@@ -55,5 +59,13 @@ const Snowflake = ({
     swayTiming={swayTiming}
   />
 );
+
+Snowflake.propTypes = {
+  flakeShape: PropTypes.string.isRequired,
+  screenHeight: PropTypes.number.isRequired,
+  xPosition: PropTypes.number.isRequired,
+  fallingSpeed: PropTypes.number.isRequired,
+  swayTiming: PropTypes.number.isRequired,
+};
 
 export default Snowflake;

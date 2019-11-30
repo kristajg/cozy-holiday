@@ -29,14 +29,14 @@ class App extends PureComponent {
 
   genericToggle = toggleItem => {
     this.setState({ [toggleItem]: !this.state[toggleItem] });
-  }
+  };
 
   render() {
     return (
       <CozyHolidayWrapper>
         {/* Display content and animations */}
         <Fireplace visible={this.state.fireVisible} />
-        {(this.state.snowVisible &&
+        {this.state.snowVisible && (
           <Snow
             isSnowing={this.state.snowVisible}
             snowIntensity={this.state.snowIntensity}

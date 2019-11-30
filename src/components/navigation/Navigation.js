@@ -32,14 +32,14 @@ const slideDown = keyframes`
 
 const NavigationWrapper = styled.div`
   position: absolute;
-  bottom: ${props => props.visible ? '0px' : '-60px'};
+  bottom: ${props => (props.visible ? '0px' : '-60px')};
   padding: 10px;
   width: 100%;
   height: 40px;
   line-height: 40px;
   color: #fff;
   background-color: #282828;
-  animation: ${props => props.visible ? slideUp : slideDown} 900ms ease;
+  animation: ${props => (props.visible ? slideUp : slideDown)} 900ms ease;
 `;
 
 const Tab = styled.div`
@@ -81,7 +81,7 @@ const Icon = styled.img`
   cursor: pointer;
 
   &:hover {
-    opacity: .9;
+    opacity: 0.9;
   }
 `;
 
@@ -113,7 +113,8 @@ const options = [
   },
 ];
 
-const filterOptions = removeOptions => options.filter(option => removeOptions.indexOf(option.name) < 0);
+const filterOptions = removeOptions =>
+  options.filter(option => removeOptions.indexOf(option.name) < 0);
 
 class Navigation extends Component {
   render() {
@@ -128,14 +129,18 @@ class Navigation extends Component {
           <IconList>
             {optionsToShow.map(option => (
               <ListItem key={option.name}>
-                <Icon src={option.icon} alt={`${option.name} icon`} onClick={() => toggle(option.toggleAction)} />
+                <Icon
+                  src={option.icon}
+                  alt={`${option.name} icon`}
+                  onClick={() => toggle(option.toggleAction)}
+                />
               </ListItem>
             ))}
           </IconList>
         </Tray>
       </NavigationWrapper>
     );
-  } 
+  }
 }
 
 Navigation.propTypes = {
