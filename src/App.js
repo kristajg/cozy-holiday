@@ -88,10 +88,6 @@ class App extends PureComponent {
     snowIntensity: 'mild', // number of snowflakes, decides snowing intensity. TODO: accept snowIntensity as a prop: mild, flurry, blizzard
   };
 
-  navigationToggle = () => {
-    this.setState({ navigationVisible: !this.state.navigationVisible });
-  }
-
   genericToggle = toggleItem => {
     this.setState({ [toggleItem]: !this.state[toggleItem] });
   }
@@ -142,11 +138,11 @@ class App extends PureComponent {
         <Cat visible={this.state.catVisible} />
 
         {/* Actual tray for library */}
-        {/* <Navigation
+        <Navigation
           visible={this.state.navigationVisible}
           toggle={this.genericToggle}
-          iconsToHide={['fire']}
-        /> */}
+          iconsToHide={['cat']}
+        />
       </CozyHolidayWrapper>
     );
   }

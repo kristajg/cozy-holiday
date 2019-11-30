@@ -7,6 +7,10 @@ import styled, { keyframes } from 'styled-components';
 import arrowUp from '../../assets/icons/arrow_up.png';
 import arrowDown from '../../assets/icons/arrow_down.png';
 import fireIcon from '../../assets/icons/fire_icon.png';
+import snowIcon from '../../assets/icons/snow_icon.png';
+import mugIcon from '../../assets/icons/mug_icon.png';
+import lightIcon from '../../assets/icons/light_icon.png';
+import catIcon from '../../assets/icons/cat_icon.png';
 
 const slideUp = keyframes`
   0% {
@@ -41,7 +45,7 @@ const NavigationWrapper = styled.div`
 const Tab = styled.div`
   position: absolute;
   right: 60px;
-  top: -43px;
+  top: -45px;
   padding-top: 7px;
   width: 100px;
   height: auto;
@@ -76,9 +80,6 @@ const Icon = styled.img`
   }
 `;
 
-// TODO: accept icons as props
-// TODO: tooltips over icons, also available as props
-
 const optionsMap = [
   {
     name: 'fire',
@@ -87,25 +88,30 @@ const optionsMap = [
   },
   {
     name: 'snow',
-    // icon: snowIcon,
+    icon: snowIcon,
     toggleAction: 'snowVisible',
   },
   {
     name: 'eggnog',
-    // icon: eggnogIcon,
+    icon: mugIcon,
     toggleAction: 'eggnogVisible',
   },
   {
     name: 'lights',
-    // icon: lightsIcon,
+    icon: lightIcon,
     toggleAction: 'lightsVisible',
   },
   {
     name: 'cat',
-    // icon: catIcon,
+    icon: catIcon,
     toggleAction: 'catVisible',
   },
 ];
+
+const filterOptions = () => {
+
+};
+// optionsMap = optionsMap.filter()
 
 class Navigation extends Component {
   render() {
@@ -121,10 +127,7 @@ class Navigation extends Component {
           <IconList>
             {optionsMap.map(option => (
               <ListItem>
-                {option.icon ?
-                  (<Icon src={option.icon} alt={`${option.name} icon`} onClick={() => toggle(option.toggleAction)} />) : 
-                  (<div onClick={() => toggle(option.toggleAction)}>{option.name}</div>)
-                }
+                <Icon src={option.icon} alt={`${option.name} icon`} onClick={() => toggle(option.toggleAction)} />
               </ListItem>
             ))}
           </IconList>
