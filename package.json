@@ -7,6 +7,7 @@
     "url": "git+https://github.com/kristajg/cozy-holiday.git"
   },
   "keywords": [
+    "react",
     "snow",
     "holiday",
     "animations",
@@ -18,6 +19,10 @@
   ],
   "author": "Krista Goralczyk",
   "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kristajg/cozy-holiday/issues"
+  },
+  "homepage": "https://github.com/kristajg/cozy-holiday",
   "dependencies": {
     "react": "^16.12.0",
     "react-dom": "^16.12.0",

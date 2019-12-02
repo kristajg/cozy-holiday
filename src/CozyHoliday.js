@@ -1,5 +1,6 @@
 // Third party libraries
 import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 // Holiday components
@@ -16,7 +17,12 @@ const CozyHolidayWrapper = styled.div`
   color: #fff;
 `;
 
-class App extends PureComponent {
+class CozyHoliday extends PureComponent {
+  static defaultProps = {
+    snowIntensity: 'mild',
+    hideIcons: [],
+  };
+
   state = {
     navigationVisible: false,
     fireVisible: false,
@@ -24,7 +30,6 @@ class App extends PureComponent {
     eggnogVisible: false,
     lightsVisible: false,
     catVisible: false,
-    snowIntensity: 'mild', // number of snowflakes, decides snowing intensity. TODO: accept snowIntensity as a prop: mild, flurry, blizzard
   };
 
   genericToggle = toggleItem => {
@@ -39,22 +44,27 @@ class App extends PureComponent {
         {this.state.snowVisible && (
           <Snow
             isSnowing={this.state.snowVisible}
-            snowIntensity={this.state.snowIntensity}
+            snowIntensity={this.props.snowIntensity}
           />
         )}
         <Eggnog visible={this.state.eggnogVisible} />
         <Lights visible={this.state.lightsVisible} />
         <Cat visible={this.state.catVisible} />
 
-        {/* Actual tray for library */}
+        {/* Navigation Tray */}
         <Navigation
           visible={this.state.navigationVisible}
           toggle={this.genericToggle}
-          // hideIcons={['cat', 'fire']}
+          hideIcons={this.props.hideIcons}
         />
       </CozyHolidayWrapper>
     );
   }
 }
 
-export default App;
+CozyHoliday.propTypes = {
+  snowIntensity: PropTypes.string.isRequired,
+  hideIcons: PropTypes.array,
+};
+
+export default CozyHoliday;

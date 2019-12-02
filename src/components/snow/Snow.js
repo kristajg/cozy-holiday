@@ -9,6 +9,7 @@ const snowIntensityConfig = {
   mild: 35,
   flurry: 55,
   blizzard: 125,
+  snowDayDontComeIntoWork: 500,
 };
 
 const randomizeXPostion = screenWidth =>
@@ -42,13 +43,18 @@ class Snow extends Component {
   };
 
   startSnow = () => {
-    let allFlakes = [];
     let numSnowflakes = snowIntensityConfig[this.props.snowIntensity];
-    for (let i = 0; i < numSnowflakes; i++) {
-      let flakeShape = Boolean(i % 2) ? 'round' : 'square';
-      allFlakes.push(this.renderFlake(i, flakeShape));
+    if (numSnowflakes) {
+      let allFlakes = [];
+      for (let i = 0; i < numSnowflakes; i++) {
+        let flakeShape = Boolean(i % 2) ? 'round' : 'square';
+        allFlakes.push(this.renderFlake(i, flakeShape));
+      }
+      return allFlakes;
     }
-    return allFlakes;
+    console.warn(
+      'Please enter a valid snowIntensity prop option: mild, flurry, or blizzard',
+    );
   };
 
   renderFlake = (key, flakeShape) => {
