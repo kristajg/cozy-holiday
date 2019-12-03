@@ -6,6 +6,10 @@
     "type": "git",
     "url": "git+https://github.com/kristajg/cozy-holiday.git"
   },
+  "bugs": {
+    "url": "https://github.com/kristajg/cozy-holiday/issues"
+  },
+  "homepage": "https://github.com/kristajg/cozy-holiday",
   "keywords": [
     "react",
     "snow",
@@ -17,40 +21,18 @@
     "retro",
     "christmas"
   ],
-  "peerDependencies": {
-    "react": "^16.3.0"
+  "private": true,
+  "scripts": {
+    "build": "nwb build-react-app",
+    "clean": "nwb clean-app",
+    "start": "nwb serve-react-app",
+    "test": "nwb test-react",
+    "test:coverage": "nwb test-react --coverage",
+    "test:watch": "nwb test-react --server"
   },
-  "author": "Krista Goralczyk",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/kristajg/cozy-holiday/issues"
-  },
-  "homepage": "https://github.com/kristajg/cozy-holiday",
   "dependencies": {
     "react": "^16.12.0",
-    "react-dom": "^16.12.0",
-    "react-scripts": "3.2.0"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+    "react-dom": "^16.12.0"
   },
   "devDependencies": {
     "babel-eslint": "^10.0.3",
@@ -62,7 +44,10 @@
     "eslint-plugin-react": "^7.17.0",
     "eslint-plugin-react-hooks": "^2.3.0",
     "eslint-plugin-security": "^1.4.0",
+    "nwb": "0.23.x",
     "prettier": "^1.19.1",
     "styled-components": "^4.4.1"
-  }
+  },
+  "author": "Krista Goralczyk",
+  "license": "MIT"
 }

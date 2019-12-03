@@ -17,7 +17,7 @@ const CozyHolidayWrapper = styled.div`
   color: #fff;
 `;
 
-class CozyHoliday extends PureComponent {
+class App extends PureComponent {
   static defaultProps = {
     snowIntensity: 'mild',
     hideIcons: [],
@@ -62,9 +62,9 @@ class CozyHoliday extends PureComponent {
   }
 }
 
-CozyHoliday.propTypes = {
+App.propTypes = {
   snowIntensity: PropTypes.string.isRequired,
   hideIcons: PropTypes.array,
 };
 
-export default CozyHoliday;
+export default App;
