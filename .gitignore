@@ -1,4 +1,7 @@
-/dist
+/demo/dist
+/es
+/lib
+/umd
 
 build/
 # Logs

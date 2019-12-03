@@ -4,11 +4,11 @@
 
 ## Installation
 
-- Running `npm install` in the app's root directory will install everything you need for development.
+- Running `npm install` in the component's root directory will install everything you need for development.
 
-## Development Server
+## Demo Development Server
 
-- `npm start` will run the app's development server at [http://localhost:3000](http://localhost:3000) with hot module reloading.
+- `npm start` will run a development server with the component's demo app at [http://localhost:3000](http://localhost:3000) with hot module reloading.
 
 ## Running Tests
 
@@ -20,8 +20,6 @@
 
 ## Building
 
-- `npm run build` creates a production build by default.
-
-   To create a development build, set the `NODE_ENV` environment variable to `development` while running this command.
+- `npm run build` will build the component for publishing to npm and also bundle the demo app.
 
 - `npm run clean` will delete built resources.
