@@ -1,7 +1,7 @@
 // Third party libraries
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import styled, { keyframes } from 'styled-components';
+import styled, { keyframes, css } from 'styled-components';
 
 // Pixel assets
 import arrowUp from '../../assets/icons/arrow_up.png';
@@ -39,7 +39,18 @@ const NavigationWrapper = styled.div`
   line-height: 40px;
   color: #fff;
   background-color: #282828;
-  animation: ${props => (props.visible ? slideUp : slideDown)} 900ms ease;
+  ${props =>
+    props.visible
+      ? css`
+          animation: ${slideUp} 800ms ease;
+        `
+      : ''};
+  ${props =>
+    props.closingNav
+      ? css`
+          animation: ${slideDown} 800ms ease;
+        `
+      : ''};
 `;
 
 const Tab = styled.div`
@@ -117,11 +128,24 @@ const filterOptions = removeOptions =>
   options.filter(option => removeOptions.indexOf(option.name) < 0);
 
 class Navigation extends Component {
+  state = {
+    closingNav: false,
+  };
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.visible && prevProps.visible !== this.props.visible) {
+      this.setState({ closingNav: true });
+    } else if (prevProps.visible !== this.props.visible) {
+      this.setState({ closingNav: false });
+    }
+  }
+
   render() {
     const { visible, toggle, hideIcons = [] } = this.props;
+    const { closingNav } = this.state;
     const optionsToShow = hideIcons.length ? filterOptions(hideIcons) : options;
     return (
-      <NavigationWrapper visible={visible}>
+      <NavigationWrapper visible={visible} closingNav={closingNav}>
         <Tab onClick={() => toggle('navigationVisible')}>
           <TabImage src={visible ? arrowUp : arrowDown} alt="arrow icon" />
         </Tab>

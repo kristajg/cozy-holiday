@@ -1,7 +1,7 @@
 // Third party libararies
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import styled, { keyframes } from 'styled-components';
+import styled, { keyframes, css } from 'styled-components';
 
 // Pixel asset imports
 import lights from '../../assets/festive_lights.png';
@@ -39,7 +39,18 @@ const LightsContainer = styled.div`
   position: absolute;
   top: ${props => (props.visible ? '-3' : '-55')}px;
   left: -10px;
-  animation: ${props => (props.visible ? slideInFromTop : slideOut)} 800ms ease;
+  ${props =>
+    props.visible
+      ? css`
+          animation: ${slideInFromTop} 800ms ease;
+        `
+      : ''};
+  ${props =>
+    props.closingLights
+      ? css`
+          animation: ${slideOut} 800ms ease;
+        `
+      : ''};
 
   @media only screen and (max-width: 600px) {
     background-size: 215px;
@@ -47,7 +58,28 @@ const LightsContainer = styled.div`
   }
 `;
 
-const Lights = ({ visible }) => <LightsContainer visible={visible} />;
+class Lights extends Component {
+  state = {
+    closingLights: false,
+  };
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.visible && prevProps.visible !== this.props.visible) {
+      this.setState({ closingLights: true });
+    } else if (prevProps.visible !== this.props.visible) {
+      this.setState({ closingLights: false });
+    }
+  }
+
+  render() {
+    return (
+      <LightsContainer
+        visible={this.props.visible}
+        closingLights={this.state.closingLights}
+      />
+    );
+  }
+}
 
 Lights.propTypes = {
   visible: PropTypes.bool.isRequired,

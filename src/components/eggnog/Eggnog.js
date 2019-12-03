@@ -1,7 +1,7 @@
 // Third party libararies
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import styled, { keyframes } from 'styled-components';
+import styled, { keyframes, css } from 'styled-components';
 
 // Pixel asset imports
 import Nog0 from '../../assets/nog/sprite_0.png';
@@ -55,8 +55,18 @@ const NogImage = styled.img`
 
   width: 190px;
   height: auto;
-  animation: ${props => (props.visible ? slideInFromRight : slideOut)} 900ms
-    ease;
+  ${props =>
+    props.visible
+      ? css`
+          animation: ${slideInFromRight} 800ms ease;
+        `
+      : ''};
+  ${props =>
+    props.closingNog
+      ? css`
+          animation: ${slideOut} 800ms ease;
+        `
+      : ''};
 
   -webkit-transition: width 600ms, height 600ms;
   transition: width 600ms, height 600ms;
@@ -68,7 +78,16 @@ class Eggnog extends Component {
   state = {
     nogStep: 0,
     nogImage: Nog0,
+    closingNog: false,
   };
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.visible && prevProps.visible !== this.props.visible) {
+      this.setState({ closingNog: true });
+    } else if (prevProps.visible !== this.props.visible) {
+      this.setState({ closingNog: false });
+    }
+  }
 
   changeNogStepOnClick = () => {
     const { nogStep } = this.state;
@@ -79,10 +98,15 @@ class Eggnog extends Component {
 
   render() {
     const { visible } = this.props;
-    const { nogImage } = this.state;
+    const { nogImage, closingNog } = this.state;
     return (
       <NogWrapper onClick={() => this.changeNogStepOnClick()}>
-        <NogImage visible={visible} src={nogImage} alt="Cup of eggnog" />
+        <NogImage
+          visible={visible}
+          closingNog={closingNog}
+          src={nogImage}
+          alt="Cup of eggnog"
+        />
       </NogWrapper>
     );
   }

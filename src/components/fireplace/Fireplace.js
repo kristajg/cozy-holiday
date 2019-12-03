@@ -1,7 +1,7 @@
 // Third party libraries
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import styled, { keyframes } from 'styled-components';
+import styled, { keyframes, css } from 'styled-components';
 
 // Asset imports
 import fire from '../../assets/fire.gif';
@@ -40,7 +40,18 @@ const FireplaceWrapper = styled.div`
   bottom: 100px;
   height: 128px;
   width: 128px;
-  animation: ${props => (props.visible ? slideInFromLeft : slideOut)} 900ms ease;
+  ${props =>
+    props.visible
+      ? css`
+          animation: ${slideInFromLeft} 800ms ease;
+        `
+      : ''};
+  ${props =>
+    props.closingFireplace
+      ? css`
+          animation: ${slideOut} 800ms ease;
+        `
+      : ''};
 `;
 
 const FireImage = styled.img`
@@ -54,12 +65,22 @@ const FireImage = styled.img`
 class Fireplace extends Component {
   state = {
     mouseIsHovered: false,
+    closingFireplace: false,
   };
 
   componentDidUpdate(prevProps) {
-    const { visible } = this.props;
+    const { visible, fireSoundOn } = this.props;
     const audio = document.getElementById('fireplace-audio');
-    if (visible && prevProps.visible !== visible) {
+
+    // Fix animation on close
+    if (prevProps.visible && prevProps.visible !== visible) {
+      this.setState({ closingFireplace: true });
+    } else if (prevProps.visible !== visible) {
+      this.setState({ closingFireplace: false });
+    }
+
+    // Play audio on show
+    if (fireSoundOn && visible && prevProps.visible !== visible) {
       if (audio instanceof HTMLAudioElement) {
         audio.volume = 0.4;
         audio.play();
@@ -75,7 +96,10 @@ class Fireplace extends Component {
 
   render() {
     return (
-      <FireplaceWrapper visible={this.props.visible}>
+      <FireplaceWrapper
+        visible={this.props.visible}
+        closingFireplace={this.state.closingFireplace}
+      >
         <FireImage
           src={fire}
           alt="Fireplace"
@@ -91,6 +115,7 @@ class Fireplace extends Component {
 
 Fireplace.propTypes = {
   visible: PropTypes.bool.isRequired,
+  fireSoundOn: PropTypes.bool.isRequired,
 };
 
 export default Fireplace;

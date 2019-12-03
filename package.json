@@ -1,14 +1,15 @@
 {
   "name": "cozy-holiday",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Adds some holiday cheer to a site",
-  "main": "lib/index.js",
+  "main": "umd/cozy-holiday.min.js",
   "module": "es/index.js",
   "files": [
     "css",
     "es",
     "lib",
-    "umd"
+    "umd",
+    "./src/assets/*"
   ],
   "scripts": {
     "build": "nwb build-react-component",

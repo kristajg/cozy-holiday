@@ -21,6 +21,7 @@ class CozyHoliday extends PureComponent {
   static defaultProps = {
     snowIntensity: 'mild',
     hideIcons: [],
+    fireSoundOn: true,
   };
 
   state = {
@@ -40,7 +41,10 @@ class CozyHoliday extends PureComponent {
     return (
       <CozyHolidayWrapper>
         {/* Display content and animations */}
-        <Fireplace visible={this.state.fireVisible} />
+        <Fireplace
+          visible={this.state.fireVisible}
+          fireSoundOn={this.props.fireSoundOn}
+        />
         {this.state.snowVisible && (
           <Snow
             isSnowing={this.state.snowVisible}
@@ -65,6 +69,7 @@ class CozyHoliday extends PureComponent {
 CozyHoliday.propTypes = {
   snowIntensity: PropTypes.string.isRequired,
   hideIcons: PropTypes.array,
+  fireSoundOn: PropTypes.bool,
 };
 
 export default CozyHoliday;
