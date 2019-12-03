@@ -1,6 +1,6 @@
 {
   "name": "cozy-holiday",
-  "version": "0.1.1",
+  "version": "0.1.3",
   "description": "Adds some holiday cheer to a site",
   "repository": {
     "type": "git",
@@ -21,7 +21,6 @@
     "retro",
     "christmas"
   ],
-  "private": true,
   "scripts": {
     "build": "nwb build-react-app",
     "clean": "nwb clean-app",
