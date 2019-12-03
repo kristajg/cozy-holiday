@@ -1,7 +1,7 @@
 {
   "name": "cozy-holiday",
   "version": "0.1.5",
-  "description": "Adds some holiday cheer to a site",
+  "description": "Add pixelated holiday cheer to a react site",
   "main": "umd/cozy-holiday.min.js",
   "module": "es/index.js",
   "files": [
