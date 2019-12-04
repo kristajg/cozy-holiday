@@ -5,7 +5,7 @@
 ❄️ Activate all at once for pure retro holiday chaos, with and new features coming out soon.
 
 
-TODO: put demo vid / link here
+![Cozy Holiday Demo](https://j.gifs.com/5Qwrmx.gif)
 
 
 ### Installation
