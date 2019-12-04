@@ -1,15 +1,15 @@
 {
   "name": "cozy-holiday",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "Add pixelated holiday cheer to a react site",
-  "main": "umd/cozy-holiday.min.js",
+  "main": "lib/index.js",
   "module": "es/index.js",
   "files": [
     "css",
     "es",
     "lib",
     "umd",
-    "./src/assets/*"
+    "src/assets"
   ],
   "scripts": {
     "build": "nwb build-react-component",

@@ -5,8 +5,8 @@ module.exports = {
     umd: {
       global: 'CozyHoliday',
       externals: {
-        react: 'React'
-      }
-    }
-  }
-}
+        react: 'React',
+      },
+    },
+  },
+};
