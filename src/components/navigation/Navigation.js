@@ -69,6 +69,10 @@ const Tab = styled.div`
 const TabImage = styled.img`
   width: 40px;
   height: auto;
+
+  @media only screen and (max-width: 600px) {
+    width: 30px;
+  }
 `;
 
 const Tray = styled.div``;
@@ -84,6 +88,10 @@ const ListItem = styled.li`
   width: 80px;
   color: #fff;
   font-family: 'Press Start 2P', cursive;
+
+  @media only screen and (max-width: 600px) {
+    width: 60px;
+  }
 `;
 
 const Icon = styled.img`
@@ -93,6 +101,11 @@ const Icon = styled.img`
 
   &:hover {
     opacity: 0.9;
+  }
+
+  @media only screen and (max-width: 600px) {
+    height: 28px;
+    width: 28px;
   }
 `;
 

@@ -34,7 +34,7 @@ const LightsContainer = styled.div`
   background-image: url(${lights});
   background-size: 320px;
   background-repeat-y: no-repeat;
-  width: 100%;
+  width: 105%;
   height: 55px;
   position: absolute;
   top: ${props => (props.visible ? '-3' : '-55')}px;
