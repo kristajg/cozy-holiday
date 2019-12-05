@@ -1,34 +1,44 @@
 {
   "name": "cozy-holiday",
-  "version": "0.1.6",
+  "version": "0.1.16",
   "description": "Add pixelated holiday cheer to a react site",
-  "main": "lib/index.js",
-  "module": "es/index.js",
+  "main": "build/index.js",
+  "module": "build/index.js",
   "files": [
     "css",
     "es",
     "lib",
     "umd",
-    "src/assets"
+    "src/assets",
+    "build"
   ],
   "scripts": {
     "build": "nwb build-react-component",
     "clean": "nwb clean-module && nwb clean-demo",
-    "prepublishOnly": "npm run build",
     "start": "nwb serve-react-demo",
     "test": "nwb test-react",
     "test:coverage": "nwb test-react --coverage",
-    "test:watch": "nwb test-react --server"
+    "test:watch": "nwb test-react --server",
+    "build:webpack": "webpack"
   },
-  "dependencies": {},
+  "dependencies": {
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "webpack": "^4.41.2"
+  },
   "peerDependencies": {
     "react": "16.x"
   },
   "devDependencies": {
-    "nwb": "0.23.x",
-    "react": "^16.12.0",
-    "react-dom": "^16.12.0",
+    "@babel/cli": "^7.7.4",
+    "@babel/core": "^7.7.4",
+    "@babel/preset-env": "^7.7.4",
+    "@babel/preset-react": "^7.7.4",
     "babel-eslint": "^10.0.3",
+    "babel-loader": "^8.0.6",
+    "babel-plugin-styled-components": "^1.10.6",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "eslint": "^6.7.2",
     "eslint-config-prettier": "^6.7.0",
     "eslint-plugin-import": "^2.18.2",
@@ -37,8 +47,12 @@
     "eslint-plugin-react": "^7.17.0",
     "eslint-plugin-react-hooks": "^2.3.0",
     "eslint-plugin-security": "^1.4.0",
+    "file-loader": "^5.0.2",
+    "nwb": "0.23.x",
     "prettier": "^1.19.1",
-    "styled-components": "^4.4.1"
+    "styled-components": "^4.4.1",
+    "url-loader": "^3.0.0",
+    "webpack-cli": "^3.3.10"
   },
   "author": "Krista Goralczyk",
   "homepage": "https://github.com/kristajg/cozy-holiday",
