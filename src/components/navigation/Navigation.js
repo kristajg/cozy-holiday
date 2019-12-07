@@ -31,7 +31,7 @@ const slideDown = keyframes`
 `;
 
 const NavigationWrapper = styled.div`
-  position: absolute;
+  position: fixed;
   bottom: ${props => (props.visible ? '0px' : '-60px')};
   padding: 10px;
   width: 100%;
@@ -64,6 +64,11 @@ const Tab = styled.div`
   border-top-right-radius: 2px;
   border-top-left-radius: 2px;
   cursor: pointer;
+
+  @media only screen and (max-width: 600px) {
+    padding-top: 0px;
+    top: -35px;
+  }
 `;
 
 const TabImage = styled.img`
