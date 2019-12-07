@@ -42,7 +42,7 @@ class Demo extends Component {
   render() {
     return (
       <DemoWrapper>
-        <DemoTitle>Cozy Holiday Demo v0.1.16</DemoTitle>
+        <DemoTitle>Cozy Holiday Demo v0.1.17</DemoTitle>
         <CozyHoliday />
       </DemoWrapper>
     );
