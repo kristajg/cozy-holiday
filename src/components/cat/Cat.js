@@ -8,7 +8,7 @@ import cat from '../../assets/cat.gif';
 
 const CatWrapper = styled.div`
   display: ${props => (props.visible ? 'block' : 'none')};
-  position: absolute;
+  position: fixed;
   bottom: 65px;
   left: 155px;
 `;

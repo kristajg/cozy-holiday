@@ -35,7 +35,7 @@ const slideOut = keyframes`
 `;
 
 const FireplaceWrapper = styled.div`
-  position: absolute;
+  position: fixed;
   left: ${props => (props.visible ? '20' : '-128')}px;
   bottom: 100px;
   height: 128px;

@@ -36,7 +36,7 @@ const LightsContainer = styled.div`
   background-repeat-y: no-repeat;
   width: 105%;
   height: 55px;
-  position: absolute;
+  position: fixed;
   top: ${props => (props.visible ? '-3' : '-55')}px;
   left: -10px;
   ${props =>
