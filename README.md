@@ -15,7 +15,7 @@ npm i --save-dev cozy-holiday
 ```
 
 
-## Usage
+## Basic Usage
 
 ```
 import CozyHoliday from 'cozy-holiday';
@@ -25,7 +25,8 @@ const MyComponent = () => (
 );
 ```
 
-Configuring props:
+## Configuration
+
   prop name: snowIntensity
   type: string
   description: Controls amount of flakes visible on screen
