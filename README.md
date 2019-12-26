@@ -1,8 +1,8 @@
 # cozy-holiday
 
 🎁 Add cozy pixelated holiday cheer to your React site!
-🎄 Features animation options for: snow, decorative lights, crackling fireplace, unlimited eggnog, and a festive boi.
-❄️ Activate all at once for pure retro holiday chaos, with and new features coming out soon.
+
+🎄 Featuring: snow, lights, crackling fireplace, eggnog, & a festive boi.
 
 
 ![Cozy Holiday Demo](https://j.gifs.com/5Qwrmx.gif)
