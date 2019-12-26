@@ -8,16 +8,15 @@
 ![Cozy Holiday Demo](https://j.gifs.com/5Qwrmx.gif)
 
 
-### Installation
+## Installation
 
 ```
 npm i --save-dev cozy-holiday
 ```
 
 
-### Usage
+## Usage
 
-Most simple, all options available by default:
 ```
 import CozyHoliday from 'cozy-holiday';
 
@@ -26,7 +25,7 @@ const MyComponent = () => (
 );
 ```
 
-Configuring prop options:
+Configuring props:
   prop name: snowIntensity
   type: string
   description: Controls amount of flakes visible on screen
