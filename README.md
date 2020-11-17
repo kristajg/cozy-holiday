@@ -27,10 +27,10 @@ const MyComponent = () => (
 
 ## Configuration
 
-  prop name: snowIntensity
-  type: string
-  description: Controls amount of flakes visible on screen
-  options:
+  prop name: snowIntensity<br/>
+  type: string<br/>
+  description: Controls amount of flakes visible on screen<br/>
+  options:<br/>
   - 'mild' (default)
   - 'flurry'
   - 'blizzard'
@@ -38,10 +38,10 @@ const MyComponent = () => (
   example: ```<CozyHoliday snowIntensity='flurry' />```
 
 
-  prop name: hideIcons
-  type: array of strings
-  description: Controls which holiday features are available in the navigation & render. By adding the feature to the array, it becomes unavailable. All features are available by default.
-  options:
+  prop name: hideIcons<br/>
+  type: array of strings<br/>
+  description: Controls which holiday features are available in the navigation & render. By adding the feature to the array, it becomes unavailable. All features are available by default.<br/>
+  options:<br/>
   - 'fire'
   - 'snow'
   - 'lights'
@@ -50,10 +50,10 @@ const MyComponent = () => (
   example: ```<CozyHoliday hideIcons={['fire', 'eggnog', 'cat']} />```
 
 
-  prop name: fireSoundOn
-  type: boolean
-  description: If you don't love the soothing sound of a crackling fireplace you totally don't have to listen to it. This isn't Tik Tok.
-  options:
+  prop name: fireSoundOn<br/>
+  type: boolean<br/>
+  description: If you don't love the soothing sound of a crackling fireplace you totally don't have to listen to it. This isn't Tik Tok.<br/>
+  options:<br/>
   - true (default)
   - false
   example: ```<CozyHoliday fireSoundOn={false} />```
