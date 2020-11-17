@@ -35,6 +35,7 @@ const MyComponent = () => (
   - 'flurry'
   - 'blizzard'
   - 'snowDayDontComeIntoWork'
+
 example:<br/>
   ```<CozyHoliday snowIntensity='flurry' />```
 
@@ -59,6 +60,7 @@ example:<br/>
   options:<br/>
   - true (default)
   - false
-example:<br/>
+
+  example:<br/>
   ```<CozyHoliday fireSoundOn={false} />```
   
