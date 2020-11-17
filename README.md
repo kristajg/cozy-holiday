@@ -48,6 +48,7 @@ example:<br/>
   - 'lights'
   - 'eggnog'
   - 'cat'
+
 example:<br/>
   ```<CozyHoliday hideIcons={['fire', 'eggnog', 'cat']} />```
 
