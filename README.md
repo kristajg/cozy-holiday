@@ -34,7 +34,7 @@ const MyComponent = () => (
   - 'mild' (default)
   - 'flurry'
   - 'blizzard'
-  - 'snowDayDontComeIntoWork'<br/>
+  - 'snowDayDontComeIntoWork'
 example:<br/>
   ```<CozyHoliday snowIntensity='flurry' />```
 
@@ -47,7 +47,7 @@ example:<br/>
   - 'snow'
   - 'lights'
   - 'eggnog'
-  - 'cat'<br/>
+  - 'cat'
 example:<br/>
   ```<CozyHoliday hideIcons={['fire', 'eggnog', 'cat']} />```
 
@@ -57,7 +57,7 @@ example:<br/>
   description: If you don't love the soothing sound of a crackling fireplace you totally don't have to listen to it. This isn't Tik Tok.<br/>
   options:<br/>
   - true (default)
-  - false<br/>
+  - false
 example:<br/>
   ```<CozyHoliday fireSoundOn={false} />```
   
