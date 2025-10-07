@@ -46,7 +46,7 @@
     "eslint-plugin-react-hooks": "^2.3.0",
     "eslint-plugin-security": "^1.4.0",
     "file-loader": "^5.0.2",
-    "nwb": "0.23.x",
+    "nwb": "0.25.x",
     "prettier": "^1.19.1",
     "styled-components": "^4.4.1",
     "url-loader": "^3.0.0",
